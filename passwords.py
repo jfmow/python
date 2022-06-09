@@ -68,7 +68,7 @@ for f in range(5):
     print(Fore.MAGENTA + "[CRTITCAL] >>> " + Fore.YELLOW +  "Generating Secure Password!" + Fore.RESET)
     res = ''.join(secrets.choice(string.ascii_letters + string.digits + string.punctuation) for x in range(num))  
     # Print the Secure string with the combonation of letters, digits and punctuation   
-    print("Secure random string is :"+ str(res))
+    print("Secure random string is :  "+ str(res))
     pwdfile = open("pwds.txt", "a")
     pwdfile.write(str(res) + "\n")
     pwdfile.close()
