@@ -1,6 +1,8 @@
 # A password manager.
 import os
 from colorama import Fore
+import string  
+import secrets 
 
 done = False
 def writePass():
@@ -60,15 +62,20 @@ if cont == "y":
 
 pwdfile = open("pwds.txt", "w")
 pwdfile.write("")
-pwdfile.close()
-import string  
-import secrets  
+pwdfile.close() 
 num = 50 # define the length of the string 
 for f in range(5):
-    print(Fore.MAGENTA + "[CRTITCAL] >>> " + Fore.YELLOW +  "Generating Secure Password!" + Fore.RESET)
-    res = ''.join(secrets.choice(string.ascii_letters + string.digits + string.punctuation) for x in range(num))  
-    # Print the Secure string with the combonation of letters, digits and punctuation   
-    print("Secure random string is :  "+ str(res))
-    pwdfile = open("pwds.txt", "a")
-    pwdfile.write(str(res) + "\n")
-    pwdfile.close()
+	print(Fore.MAGENTA + "[CRTITCAL] >>> " + Fore.YELLOW +  "Generating Secure Password!" + Fore.RESET)
+	res = ''.join(secrets.choice(string.ascii_letters + string.digits + string.punctuation) for x in range(num))  
+	# Print the Secure string with the combonation of letters, digits and punctuation   
+	#print("Secure random string is :  "+ str(res))
+	passw = []
+	for i in res:
+		if i in ["~", "{", "}", "*", "\\", "/", "//", "]", "[", "=", ":", ";", "|", "\"", "\,", "\'", "`"]:
+			continue
+		else:
+			passw.append(i)
+	print("Secure random string is:  " + ''.join(passw))
+	pwdfile = open("pwds.txt", "a")
+	pwdfile.write(''.join(passw) + "\n")
+	pwdfile.close()
