@@ -11,7 +11,7 @@ def inputVal():
     none = input("Neither: ")
     abc = int(a)+int(b)+int(none)
     more = input("Do you require more groups? [y/n]: ")
-    if more == "y" or "Y":
+    if more.lower() == "y":
         # Asking the user how many values they want to add, then it is asking the user to input the
         # values.
         ammount = int(input("How many: "))
